@@ -17,7 +17,7 @@ export class Character {
   }
 }
 
-export function battle(charObj) {
+export function audition(charObj) {
   if (charObj.talent >= 5 || charObj.talent + (charObj.hotness / 2) >= 5) {
     charObj.finances += 50;
     charObj.exp += 3;
@@ -27,4 +27,5 @@ export function battle(charObj) {
     charObj.exp += 1;
     charObj.esteem -= 1;
   }
+  charObj.levelCalc();
 }
