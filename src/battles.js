@@ -1,22 +1,3 @@
-export class Character {
-  constructor(type, hotness, talent, finances) {
-    this.type = type;
-    this.hotness = hotness;
-    this.talent = talent;
-    this.esteem = 5;
-    this.finances = finances;
-    this.exp = 0;
-    this.fame = 0;
-    this.inv = [];
-  }
-
-  levelCalc() {
-    if (this.exp >= 20) {
-      this.fame = 1;
-    }
-  }
-}
-
 export function audition(charObj) {
   if (charObj.talent >= 5 || charObj.talent + (charObj.hotness / 2) >= 5) {
     charObj.finances += 50;
@@ -50,7 +31,7 @@ export function awards(charObj) {
     charObj.esteem += 20;
   } else {
     charObj.finances -= 100;
-    charObj.exp += 30;
+    charObj.exp += 3;
   }
   charObj.levelCalc();
 }

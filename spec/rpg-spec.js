@@ -1,4 +1,6 @@
-import{ Character, audition, performance, awards } from "./../src/rpg.js";
+import{ audition, performance, awards } from "./../src/battles.js";
+import{ Character } from "./../src/character.js";
+import{ buyMakeUp, buyHairSpray } from "./../src/purchaseinv.js";
 
 describe('Character', function() {
   let reusableCharacter1;
@@ -51,5 +53,11 @@ describe('Character', function() {
     expect(reusableCharacter3.finances).toEqual(250);
     expect(reusableCharacter3.exp).toEqual(10);
     expect(reusableCharacter3.esteem).toEqual(15);
+  });
+
+  it('should buy makeup, add to Character.inv and subtract Character.finances', function(){
+    buyMakeUp(reusableCharacter3);
+    expect(reusableCharacter3.finances).toEqual(130);
+    expect(reusableCharacter3.inv).toContain('makeup');
   });
 });
