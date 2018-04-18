@@ -1,6 +1,7 @@
-import{ audition, performance, awards } from "./../src/battles.js";
-import{ Character } from "./../src/character.js";
-import{ buyMakeUp, buyHairSpray } from "./../src/purchaseinv.js";
+import { audition, performance, awards } from "./../src/battles.js";
+import { Character } from "./../src/character.js";
+import { buyMakeUp, buyHairSpray } from "./../src/purchaseinv.js";
+import { useMakeUp } from "./../src/consumeinv.js";
 
 describe('Character', function() {
   let reusableCharacter1;
@@ -58,6 +59,15 @@ describe('Character', function() {
   it('should buy makeup, add to Character.inv and subtract Character.finances', function(){
     buyMakeUp(reusableCharacter3);
     expect(reusableCharacter3.finances).toEqual(130);
+    expect(reusableCharacter3.inv).toContain('makeup');
+  });
+
+  it('should consume makeup, add 2 to Character.hotness and remove makeup from Character.inv', function(){
+    buyMakeUp(reusableCharacter3);
+    buyMakeUp(reusableCharacter3);
+    expect(reusableCharacter3.inv).toContain('makeup','makeup');
+    useMakeUp(reusableCharacter3);
+    expect(reusableCharacter3.hotness).toEqual(3);
     expect(reusableCharacter3.inv).toContain('makeup');
   });
 });
