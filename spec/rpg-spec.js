@@ -1,16 +1,21 @@
-import{ Character, audition } from "./../src/rpg.js";
+import{ Character, audition, performance, awards } from "./../src/rpg.js";
 
 describe('Character', function() {
   let reusableCharacter1;
   let reusableCharacter2;
+  let reusableCharacter3;
+  let reusableCharacter4;
 
   beforeEach(function() {
-    reusableCharacter1 = new Character('boyband singer', 8, 3, 50);
-    reusableCharacter2 = new Character('thespian actor', 2, 2, 50);
+    reusableCharacter1 = new Character('handsome boyband singer', 8, 3, 50);
+    reusableCharacter2 = new Character('unfortunate thespian enthusiast', 2, 2, 50);
+    reusableCharacter3 = new Character('talented but homely actor', 1, 9, 150);
+    reusableCharacter4 = new Character('depressed sexy savant', 8, 8, 50);
+    // reusableCharacter4.esteem = -100;
   });
 
   it('should return Character object with reusableCharacter properties', function() {
-    expect(reusableCharacter1.type).toEqual('boyband singer');
+    expect(reusableCharacter1.type).toEqual('handsome boyband singer');
     expect(reusableCharacter1.hotness).toEqual(8);
     expect(reusableCharacter1.talent).toEqual(3);
     expect(reusableCharacter1.finances).toEqual(50);
@@ -39,5 +44,12 @@ describe('Character', function() {
     audition(reusableCharacter1);
     audition(reusableCharacter1);
     expect(reusableCharacter1.fame).toEqual(1);
+  });
+
+  it('should add Character.exp , Character.finances, and Character.esteem on successful performance', function(){
+    performance(reusableCharacter3);
+    expect(reusableCharacter3.finances).toEqual(250);
+    expect(reusableCharacter3.exp).toEqual(10);
+    expect(reusableCharacter3.esteem).toEqual(15);
   });
 });
