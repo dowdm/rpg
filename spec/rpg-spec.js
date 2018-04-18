@@ -1,7 +1,7 @@
 import { audition, performance, awards } from "./../src/battles.js";
 import { Character } from "./../src/character.js";
 import { buyMakeUp, buyHairSpray } from "./../src/purchaseinv.js";
-import { useMakeUp } from "./../src/consumeinv.js";
+import { useMakeUp, useHairSpray } from "./../src/consumeinv.js";
 
 describe('Character', function() {
   let reusableCharacter1;
@@ -14,7 +14,8 @@ describe('Character', function() {
     reusableCharacter2 = new Character('unfortunate thespian enthusiast', 2, 2, 50);
     reusableCharacter3 = new Character('talented but homely actor', 1, 9, 150);
     reusableCharacter4 = new Character('depressed sexy savant', 8, 8, 50);
-    // reusableCharacter4.esteem = -100;
+    reusableCharacter4.exp = 100;
+    reusableCharacter4.esteem = -100;
   });
 
   it('should return Character object with reusableCharacter properties', function() {
@@ -69,5 +70,21 @@ describe('Character', function() {
     useMakeUp(reusableCharacter3);
     expect(reusableCharacter3.hotness).toEqual(3);
     expect(reusableCharacter3.inv).toContain('makeup');
+  });
+
+  it('should consume hairspray, add 3 to Character.hotness, add 2 to Character.esteem and remove hairspray from Character.inv', function(){
+    buyHairSpray(reusableCharacter3);
+    buyHairSpray(reusableCharacter3);
+    expect(reusableCharacter3.inv).toContain('hairspray','hairspray');
+    useHairSpray(reusableCharacter3);
+    expect(reusableCharacter3.hotness).toEqual(4);
+    expect(reusableCharacter3.esteem).toEqual(7);
+    expect(reusableCharacter3.inv).toContain('hairspray');
+  });
+
+  it('should increase charObj.finances by 650 on successful performance for Character with charObj.fame 5', function(){
+    reusableCharacter4.levelCalc();
+    performance(reusableCharacter4);
+    expect(reusableCharacter4.finances).toEqual(650);
   });
 });
