@@ -6,6 +6,17 @@ import $ from 'jquery';
 
 var userCharacter;
 
+function updateCharacterSheet(userCharacter) {
+  $(".character-image").html(`<img src="img/${userCharacter.type}.svg">`);
+  $(".character-fame").text(`${userCharacter.fame}/5`);
+  $(".character-hotness").text(userCharacter.hotness);
+  $(".character-talent").text(userCharacter.talent);
+  $(".character-esteem").text(userCharacter.esteem);
+  $(".character-finances").text(userCharacter.finances);
+  $(".character-exp").text(userCharacter.exp);
+  $(".character-inventory").text(userCharacter.inv.join(", "));
+}
+
 function genCharacter(userClass) {
   switch(userClass) {
   case "1":
@@ -22,17 +33,31 @@ function genCharacter(userClass) {
     userCharacter.esteem = -100;
     break;
   }
+  $('form').hide();
+  updateCharacterSheet(userCharacter);
+  $('.game-interface').show();
 }
 
-function updateCharacterSheet(userCharacter) {
-  $(".character-image").html(`<img src="img/${userCharacter.type}.svg">`);
-  $(".character-fame").text(`${userCharacter.fame}/5`);
-  $(".character-hotness").text(userCharacter.hotness);
-  $(".character-talent").text(userCharacter.talent);
-  $(".character-esteem").text(userCharacter.esteem);
-  $(".character-finances").text(userCharacter.finances);
-  $(".character-exp").text(userCharacter.exp);
-  $(".character-inventory").text(userCharacter.inv.join(", "));
+function runBattle(battle) {
+  if (battle === 'audition') {
+    userCharacter.audition();
+  } else if (battle === 'performance') {
+    userCharacter.performance();
+  } else if (battle === 'awards') {
+    userCharacter.awards();
+  }
+  updateCharacterSheet(userCharacter);
+}
+
+function buyStuff(item) {
+  if (item === 'makeup') {
+    userCharacter.buyMakeUp();
+  } else if (item === 'hairspray') {
+    userCharacter.buyHairSpray();
+  } else if (item === 'acting') {
+    userCharacter.buyMethodActing();
+  }
+  updateCharacterSheet(userCharacter);
 }
 
 $(document).ready(function() {
@@ -40,9 +65,13 @@ $(document).ready(function() {
     e.preventDefault();
     let userClass = $("input:radio[name=class]:checked").val();
     genCharacter(userClass);
-    $('form').hide();
-    $('.game-interface').show();
-    updateCharacterSheet(userCharacter);
-
+    $('.item').click(function(){
+      let itemPurchase = $(this).attr('data-item');
+      buyStuff(itemPurchase);
+    });
+    $('.battletype').click(function(){
+      let battleSelect = $(this).attr('data-battleType');
+      runBattle(battleSelect);
+    });
   });
 });

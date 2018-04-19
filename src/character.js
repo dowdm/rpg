@@ -9,7 +9,7 @@ class Character {
     this.fame = 0;
     this.inv = [];
   }
-  
+
   //LEVEL METER
   levelCalc() {
     if (this.exp >= 100) {
@@ -42,7 +42,7 @@ class Character {
   }
   performance() {
     if (this.talent >= 8 || this.talent + (this.hotness / 3) >= 8) {
-      
+
       this.finances += 100 * (1 + this.fame);
       this.exp += 10;
       this.esteem += 10;
@@ -66,19 +66,19 @@ class Character {
   }
   //PURCHASE INVENTORY
   buyMakeUp() {
-    if (this.finances >= 20) {
+    if (this.finances >= 20 && this.inv.length < 10) {
       this.inv.push('makeup');
       this.finances -= 20;
     }
   }
   buyHairSpray() {
     if (this.finances >= 40) {
-      this.inv.push('hairspray');
+      this.inv.push('hairspray' && this.inv.length < 10);
       this.finances -= 40;
     }
   }
   buyMethodActing() {
-    if (this.finances >= 150) {
+    if (this.finances >= 150 && this.inv.length < 10) {
       this.inv.push('methodacting');
       this.finances -= 150;
     }
