@@ -72,8 +72,8 @@ class Character {
     }
   }
   buyHairSpray() {
-    if (this.finances >= 40) {
-      this.inv.push('hairspray' && this.inv.length < 10);
+    if (this.finances >= 40 && this.inv.length < 10) {
+      this.inv.push('hairspray');
       this.finances -= 40;
     }
   }

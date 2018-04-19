@@ -47,6 +47,12 @@ form img {
   background-color: lightyellow;
   border-radius: 3px;
   padding: 10px 20px;
+  text-align: center;
+}
+
+.battle img:hover, .store img:hover {
+  filter:grayscale();
+  cursor: pointer;
 }
 
 .store {
@@ -55,6 +61,7 @@ form img {
   background-color: lightblue;
   border-radius: 3px;
   padding: 10px 20px;
+  text-align: center;
 }
 
 .character-image {
@@ -64,5 +71,5 @@ form img {
 .col-4, .col-3 {
   float: left;
   margin: 20px 10px;
-  height: 700px;
+  height: 900px;
 }
