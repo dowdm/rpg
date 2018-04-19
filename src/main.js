@@ -6,6 +6,24 @@ import $ from 'jquery';
 
 var userCharacter;
 
+function useStuff(item) {
+  if (item === 'makeup') {
+    userCharacter.useMakeUp();
+  } else if (item === 'hairspray') {
+    userCharacter.useHairSpray();
+  } else if (item === 'methodacting') {
+    userCharacter.useMethodActing();
+  }
+  updateCharacterSheet(userCharacter);
+}
+
+function activateStuff() {
+  $('.inventory-image').click(function(){
+    let itemConsume = $(this).attr('data-consumeItem');
+    useStuff(itemConsume);
+  });
+}
+
 function updateCharacterSheet(userCharacter) {
   $(".character-image").html(`<img src="img/${userCharacter.type}.svg">`);
   $(".character-fame").text(`${userCharacter.fame}/5`);
@@ -14,7 +32,11 @@ function updateCharacterSheet(userCharacter) {
   $(".character-esteem").text(userCharacter.esteem);
   $(".character-finances").text(userCharacter.finances);
   $(".character-exp").text(userCharacter.exp);
-  $(".character-inventory").text(userCharacter.inv.join(", "));
+  $(".character-inventory").empty();
+  userCharacter.inv.forEach(function(element) {
+    $(".character-inventory").append('<img class="inventory-image" data-consumeItem="' + element + '" src="img/' + element + '.svg">');
+  });
+  activateStuff();
 }
 
 function genCharacter(userClass) {
@@ -73,5 +95,6 @@ $(document).ready(function() {
       let battleSelect = $(this).attr('data-battleType');
       runBattle(battleSelect);
     });
+
   });
 });

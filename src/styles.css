@@ -68,6 +68,11 @@ form img {
   margin: 10px 0;
 }
 
+.inventory-image {
+  width: 50px;
+  margin: 2px;
+}
+
 .col-4, .col-3 {
   float: left;
   margin: 20px 10px;
