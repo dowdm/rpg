@@ -8,6 +8,7 @@ h1 {
   font-size: 100px;
   margin-top: 20px;
   color: orchid;
+  text-shadow: 2px 2px darkorchid;
 }
 
 h3, button{
@@ -16,4 +17,13 @@ h3, button{
 
 form img {
   width: 100px;
+}
+
+.character-sheet {
+  display: none;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 3px;
+  padding: 10px 20px;
+  width: 30%;
 }
