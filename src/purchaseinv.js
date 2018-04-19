@@ -11,3 +11,10 @@ export function buyHairSpray(charObj) {
   charObj.finances -= 40;
   }
 }
+
+export function buyMethodActing(charObj) {
+  if (charObj.finances >= 150) {
+  charObj.inv.push('methodacting');
+  charObj.finances -= 150;
+  }
+}

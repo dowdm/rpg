@@ -1,7 +1,7 @@
 import { audition, performance, awards } from "./../src/battles.js";
 import { Character } from "./../src/character.js";
-import { buyMakeUp, buyHairSpray } from "./../src/purchaseinv.js";
-import { useMakeUp, useHairSpray } from "./../src/consumeinv.js";
+import { buyMakeUp, buyHairSpray, buyMethodActing } from "./../src/purchaseinv.js";
+import { useMakeUp, useHairSpray, useMethodActing } from "./../src/consumeinv.js";
 
 describe('Character', function() {
   let reusableCharacter1;
@@ -86,5 +86,13 @@ describe('Character', function() {
     reusableCharacter4.levelCalc();
     performance(reusableCharacter4);
     expect(reusableCharacter4.finances).toEqual(650);
+  });
+
+  it('should consume methodacting, increase charObj.talent by 3, increase charObj.esteem by 1 and remove methodacting from Character.inv', function(){
+    buyMethodActing(reusableCharacter3);
+    expect(reusableCharacter3.inv).toContain('methodacting');
+    useMethodActing(reusableCharacter3);
+    expect(reusableCharacter3.talent).toEqual(12);
+    expect(reusableCharacter3.esteem).toEqual(6);
   });
 });

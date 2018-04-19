@@ -14,3 +14,12 @@ export function useHairSpray(charObj) {
     charObj.inv.splice(removeItemIndex, 1);
   }
 }
+
+export function useMethodActing(charObj) {
+  if (charObj.inv.includes('methodacting')) {
+    charObj.talent += 3;
+    charObj.esteem += 1;
+    let removeItemIndex = charObj.inv.indexOf('methodacting');
+    charObj.inv.splice(removeItemIndex, 1);
+  }
+}
