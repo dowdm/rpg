@@ -19,7 +19,7 @@
           <label class="form-check-label">Hollywood Enthusiast</label>
         </div>
         <div class="form-check form-check-inline">
-          <img src="img/homely.svg" alt="homely actor"><br>
+          <img src="img/homelyactor.svg" alt="homely actor"><br>
           <input class="form-check-input" type="radio" name="class" id="homelyactor" value="3">
           <label class="form-check-label">Homely Actor</label>
         </div>
@@ -31,28 +31,30 @@
         <button type="submit" class="btn btn-primary">CONFIRM CHARACTER</button>
       </form>
       <div class="row game-interface">
-        <div class="col-4">
-          <div class="character-sheet">
-            <div class="character-image"></div>
-            <p>
-              Fame: <span class="character-fame"></span><br>
-              Hotness: <span class="character-hotness"></span><br>
-              Talent: <span class="character-talent"></span><br>
-              Esteem: <span class="character-esteem"></span><br>
-              Finances: <span class="character-finances"></span><br>
-              Exp: <span class="character-exp"></span><br>
-              Inventory: <span class="character-inventory"></span>
-            </p>
+        <div class="col-4 character-sheet">
+          <div class="character-image">
           </div>
+          <p>
+            Fame: <span class="character-fame"></span><br>
+            Hotness: <span class="character-hotness"></span><br>
+            Talent: <span class="character-talent"></span><br>
+            Esteem: <span class="character-esteem"></span><br>
+            Finances: <span class="character-finances"></span><br>
+            Exp: <span class="character-exp"></span><br>
+            Inventory: <span class="character-inventory"></span>
+          </p>
         </div>
-        <div class="col-4">
-          <!-- Battles -->
+        <div class="col-3 battle">
+          <h3 class="text-center">Battle</h3>
+          <img class="battletype" data-battletype="audition" src="img/audition.svg">
+          <img class="battletype" data-battletype="performance" src="img/performance.svg">
+          <img class="battletype" data-battletype="awards" src="img/awards.svg">
         </div>
-        <div class="col-4">
-          <div class="store">
-            <h3>Store</h3>
-            <img class="item" data-item="makeup">
-          </div>
+        <div class="col-3 store">
+          <h3 class="text-center">Store</h3>
+          <img class="item" data-item="makeup" src="img/makeup.svg">
+          <img class="item" data-item="hairspray" src="img/hairspray.svg">
+          <img class="item" data-item="acting" src="img/acting.svg">
         </div>
       </div>
     </div>

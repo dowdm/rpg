@@ -23,17 +23,46 @@ form img {
   width: 100px;
 }
 
+.battle img, .store img {
+  display: block;
+  margin: 30px auto;
+  width: 150px;
+}
+
 .game-interface {
   display: none;
 }
 
 .character-sheet {
-  border: 1px solid black;
+  border: 2px solid orchid;
+  box-shadow: 2px 2px darkorchid;
   background-color: thistle;
+  border-radius: 3px;
+  padding: 10px 20px;
+}
+
+.battle {
+  border: 2px solid yellow;
+  box-shadow: 2px 2px gold;
+  background-color: lightyellow;
+  border-radius: 3px;
+  padding: 10px 20px;
+}
+
+.store {
+  border: 2px solid blue;
+  box-shadow: 2px 2px darkblue;
+  background-color: lightblue;
   border-radius: 3px;
   padding: 10px 20px;
 }
 
 .character-image {
   margin: 10px 0;
+}
+
+.col-4, .col-3 {
+  float: left;
+  margin: 20px 10px;
+  height: 700px;
 }
